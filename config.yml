@@ -61,8 +61,8 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "净整没用的 🌱"
-    Content: 想博客标题想了快一个小时，人生有几个一个小时？
+    Title: "Welcome to x2x5's blog 🌱"
+    Content: If you have any questions, please leave a message!
 
   # socialIcons:
   #   - name: RSS
