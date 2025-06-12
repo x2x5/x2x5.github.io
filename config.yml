@@ -20,6 +20,7 @@ params:
   title: Tai's Blog
   description: "I blog to think about interesting things."
   keywords: [Blog, Portfolio, PaperMod]
+  author: "x2x5" # 请将此处改为您的真实姓名
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
