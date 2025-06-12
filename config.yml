@@ -1,4 +1,4 @@
-baseURL: "http://yoursite.com"
+baseURL: "https://x2x5.github.io"
 title: Test
 paginate: 8
 theme: PaperMod
@@ -24,7 +24,7 @@ params:
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
-  defaultTheme: dark # dark, light
+  defaultTheme: auto # dark, light
   disableThemeToggle: false
 
   ShowLastMod: true
@@ -55,14 +55,14 @@ params:
     safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "Home"
+    text: "x2x5"
     # icon: /apple-touch-icon.png
     iconHeight: 35
 
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: Hi, this is the demo of Yunpeng Tai's site.
+    Content: Hi, this is x2x5's site.
 
   socialIcons:
     - name: RSS
@@ -117,10 +117,6 @@ menu:
       name: 标签
       url: /tags/
       weight: 20
-    - identifier: friends
-      name: 友人
-      url: /friends/
-      weight: 22
     - identifier: about
       name: 关于
       url: /about/

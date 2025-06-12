@@ -2,6 +2,7 @@
 title: "关于"
 url: "/about/"
 summary: "关于我"
+ShowCopyRight: false
 ---
 
 ## 关于我
