@@ -28,7 +28,7 @@ params:
   disableThemeToggle: false
 
   ShowLastMod: true
-  ShowCopyRight: true
+  ShowCopyRight: false
   ShowReadingTime: false
   ShowShareButtons: false
   ShowPostNavLinks: true
@@ -61,8 +61,8 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Welcome to x2x5's blog 🌱"
-    Content: If you have any questions, please leave a message!
+    Title: "🐳 Welcome to x2x5's blog "
+    Content: feel free to leave a message! 
 
   # socialIcons:
   #   - name: RSS
@@ -95,22 +95,31 @@ params:
 
 menu:
   main:
+    - identifier: featured
+      name: Featured
+      url: /featured/
+      weight: 4
     - identifier: archive
-      name: 全部
+      name: Archive
       url: /archives/
       weight: 5
     - identifier: search
-      name: 搜索
+      name: Search
       url: /search/
       weight: 6
     - identifier: tags
-      name: 标签
+      name: Tags
       url: /tags/
       weight: 20
-    - identifier: about
-      name: 提问
-      url: /about/
+    - identifier: comments
+      name: Comments
+      url: /comments/
       weight: 30
+    - identifier: papers
+      name: Papers
+      url: https://x2x5.github.io/top/
+      weight: 40
+      
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 markup:

@@ -1,5 +1,5 @@
 ---
-title: "全部"
+title: "Archives"
 layout: "archives"
 url: "/archives/"
 summary: archives
