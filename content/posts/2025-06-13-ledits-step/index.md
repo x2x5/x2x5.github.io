@@ -91,7 +91,7 @@ tags: ['Diffusion', 'LEDITS++', 'featured']
 
 `\begin{align*} 
 \text{total\_guidance} &= \left( 3 \times \text{final\_mask\_clooney} \odot \left( \text{noise\_pred}\_{\text{clooney}} - \text{noise\_uncond} \right) \right) + \\ 
-&\quad \left( 4 \times \text{final\_mask\_sunglasses} \odot \left( \text{noise\_pred}_{\text{sunglasses}} - \text{noise\_uncond} \right) \right) 
+&\quad \left( 4 \times \text{final\_mask\_sunglasses} \odot \left( \text{noise\_pred}\_{\text{sunglasses}} - \text{noise\_uncond} \right) \right) 
 \end{align*}`
 
 ### 四、主线代码流程
