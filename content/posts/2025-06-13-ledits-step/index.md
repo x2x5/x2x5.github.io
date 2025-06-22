@@ -1,5 +1,5 @@
 ---
-title: "LEDITS++ 图像编辑：生成步骤"
+title: "LEDITS++: Generation Steps"
 date: 2025-06-13T16:35:01+08:00
 draft: false
 math: true

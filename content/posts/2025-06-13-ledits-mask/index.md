@@ -1,5 +1,5 @@
 ---
-title: "LEDITS++ 图像编辑：计算掩码"
+title: "LEDITS++: Mask Computation"
 date: 2025-06-13T17:40:48+08:00
 draft: false
 math: true
