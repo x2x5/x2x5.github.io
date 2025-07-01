@@ -1,5 +1,5 @@
 ---
-title: "LEDITS++ 图像编辑：注意力图"
+title: "LEDITS++: Attention Map"
 date: 2025-06-13T19:57:38+08:00
 draft: false
 tags: ['Diffusion', 'LEDITS++', 'featured']
