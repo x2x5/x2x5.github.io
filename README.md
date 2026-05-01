@@ -1,18 +1,44 @@
 # x2x5.github.io
 
-Homepage for x2x5 Research.
+## 中文说明
 
-## Sections
+x2x5 Research 的主页项目。
 
-- `Read`: 读论文的技能 / skills for read paper
-- `Write`: 写论文的技能 / skills for write paper
-- `Find`: 检索顶会论文 / Top-conference paper retrieval
+### 页面模块
 
-## Language Switch
+- `Find`：检索顶会论文
+- `Write`：写论文的技能
+- `Read`：读论文的技能
 
-The top-right switcher supports Chinese and English, with selection saved in `localStorage`.
+### 语言切换
 
-## Local Preview
+右上角支持中英文切换，选择会保存在 `localStorage`。
+
+### 本地预览
+
+```bash
+python3 -m http.server 8000
+```
+
+在浏览器打开 `http://localhost:8000`。
+
+---
+
+## English
+
+Homepage project for x2x5 Research.
+
+### Sections
+
+- `Find`: Top-conference paper retrieval
+- `Write`: Skills for writing papers
+- `Read`: Skills for reading papers
+
+### Language Switch
+
+The top-right switcher supports Chinese and English, and the selection is saved in `localStorage`.
+
+### Local Preview
 
 ```bash
 python3 -m http.server 8000
