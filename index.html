@@ -121,6 +121,17 @@
       line-height: 1.5;
       font-size: 0.95rem;
     }
+
+    .section-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin: 28px 0 10px;
+    }
+
+    .cards--supervisors {
+      grid-template-columns: repeat(3, 1fr);
+    }
   </style>
 </head>
 <body>
@@ -141,13 +152,20 @@
         <h2 data-i18n="writeTitle">Write</h2>
         <p data-i18n="writeDesc">skills for write paper</p>
       </a>
-      <a class="card" href="https://x2x5.top/lyy">
-        <h2 data-i18n="supervisorTitle">Supervisor</h2>
-        <p data-i18n="supervisorDesc">supervisor skills web cards</p>
-      </a>
       <a class="card" href="https://x2x5.top/blog/">
         <h2 data-i18n="blogTitle">Blog</h2>
         <p data-i18n="blogDesc">thoughts & insights</p>
+      </a>
+    </section>
+    <p class="section-label" data-i18n="supervisorsLabel">导师</p>
+    <section class="cards cards--supervisors">
+      <a class="card" href="https://x2x5.top/lyy">
+        <h2 data-i18n="supervisorTitle">骆昱宇</h2>
+        <p data-i18n="supervisorDesc">Assistant Professor, HKUST(GZ)</p>
+      </a>
+      <a class="card" href="https://x2x5.top/think/">
+        <h2 data-i18n="selfTitle">x2x5</h2>
+        <p data-i18n="selfDesc">description</p>
       </a>
     </section>
   </main>
@@ -157,23 +175,29 @@
         title: "x2x5 Research",
         writeTitle: "Write",
         writeDesc: "写论文的技能",
-        supervisorTitle: "Supervisor",
-        supervisorDesc: "博导的技能",
+        supervisorTitle: "骆昱宇",
+        supervisorDesc: "港科广助理教授",
         findTitle: "Find",
         findDesc: "检索顶会论文",
         blogTitle: "Blog",
-        blogDesc: "经验 & 思考"
+        blogDesc: "经验 & 思考",
+        supervisorsLabel: "导师",
+        selfTitle: "x2x5",
+        selfDesc: "野鸡大学副教授"
       },
       en: {
         title: "x2x5 Research",
         writeTitle: "Write",
         writeDesc: "skills for write paper",
-        supervisorTitle: "Supervisor",
-        supervisorDesc: "skills for research pipeline",
+        supervisorTitle: "Yuyu Luo",
+        supervisorDesc: "Assistant Professor, HKUST(GZ)",
         findTitle: "Find",
         findDesc: "retrieval for top papers",
         blogTitle: "Blog",
-        blogDesc: "experience & thoughts"
+        blogDesc: "experience & thoughts",
+        supervisorsLabel: "Supervisors",
+        selfTitle: "x2x5",
+        selfDesc: "Associate Professor, WCU"
       }
     };
 
