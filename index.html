@@ -90,7 +90,7 @@
     .cards {
       display: grid;
       gap: 16px;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .card {
@@ -130,7 +130,31 @@
     }
 
     .cards--supervisors {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
+    }
+
+    .layout {
+      display: flex;
+      gap: 0;
+      align-items: flex-start;
+    }
+
+    .layout-left {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .layout-divider {
+      width: 1px;
+      align-self: stretch;
+      background: var(--border);
+      margin: 0 24px;
+      flex-shrink: 0;
+    }
+
+    .layout-right {
+      width: 240px;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -143,31 +167,43 @@
         <button class="lang-btn" data-lang="en" type="button">EN</button>
       </div>
     </div>
-    <section class="cards">
-      <a class="card" href="https://x2x5.top/find">
-        <h2 data-i18n="findTitle">Find</h2>
-        <p data-i18n="findDesc">paper search website</p>
-      </a>
-      <a class="card" href="https://x2x5.top/write">
-        <h2 data-i18n="writeTitle">Write</h2>
-        <p data-i18n="writeDesc">skills for write paper</p>
-      </a>
-      <a class="card" href="https://x2x5.top/blog/">
-        <h2 data-i18n="blogTitle">Blog</h2>
-        <p data-i18n="blogDesc">thoughts & insights</p>
-      </a>
-    </section>
-    <p class="section-label" data-i18n="supervisorsLabel">导师</p>
-    <section class="cards cards--supervisors">
-      <a class="card" href="https://x2x5.top/lyy">
-        <h2 data-i18n="supervisorTitle">骆昱宇</h2>
-        <p data-i18n="supervisorDesc">Assistant Professor, HKUST(GZ)</p>
-      </a>
-      <a class="card" href="https://x2x5.top/cardz/">
-        <h2 data-i18n="selfTitle">卡子</h2>
-        <p data-i18n="selfDesc">description</p>
-      </a>
-    </section>
+    <div class="layout">
+      <div class="layout-left">
+        <p class="section-label" data-i18n="toolsLabel">工具</p>
+        <section class="cards">
+          <a class="card" href="https://x2x5.top/find">
+            <h2 data-i18n="findTitle">Find</h2>
+            <p data-i18n="findDesc">paper search website</p>
+          </a>
+          <a class="card" href="https://x2x5.top/write">
+            <h2 data-i18n="writeTitle">Write</h2>
+            <p data-i18n="writeDesc">skills for write paper</p>
+          </a>
+          <a class="card" href="https://x2x5.top/blog/">
+            <h2 data-i18n="blogTitle">Blog</h2>
+            <p data-i18n="blogDesc">thoughts & insights</p>
+          </a>
+          <a class="card" href="https://x2x5.top/ccf">
+            <h2 data-i18n="ccfTitle">CCF</h2>
+            <p data-i18n="ccfDesc">CCF recommended level</p>
+          </a>
+        </section>
+      </div>
+      <div class="layout-divider"></div>
+      <div class="layout-right">
+        <p class="section-label" data-i18n="supervisorsLabel">导师</p>
+        <section class="cards cards--supervisors">
+          <a class="card" href="https://x2x5.top/lyy">
+            <h2 data-i18n="supervisorTitle">骆昱宇</h2>
+            <p data-i18n="supervisorDesc">Professor, HKUST(GZ)</p>
+          </a>
+          <a class="card" href="https://x2x5.top/cardz/">
+            <h2 data-i18n="selfTitle">卡子</h2>
+            <p data-i18n="selfDesc">description</p>
+          </a>
+        </section>
+      </div>
+    </div>
   </main>
   <script>
     const I18N = {
@@ -181,6 +217,9 @@
         findDesc: "检索顶会论文",
         blogTitle: "Blog",
         blogDesc: "经验 & 思考",
+        ccfTitle: "CCF",
+        ccfDesc: "CCF 等级查询",
+        toolsLabel: "工具",
         supervisorsLabel: "导师",
         selfTitle: "卡子",
         selfDesc: "野鸡大学副教授"
@@ -190,21 +229,23 @@
         writeTitle: "Write",
         writeDesc: "skills for write paper",
         supervisorTitle: "Yuyu Luo",
-        supervisorDesc: "Assistant Professor, HKUST(GZ)",
+        supervisorDesc: "Professor, HKUST(GZ)",
         findTitle: "Find",
         findDesc: "retrieval for top papers",
         blogTitle: "Blog",
         blogDesc: "experience & thoughts",
+        ccfTitle: "CCF",
+        ccfDesc: "CCF recommended level",
+        toolsLabel: "Tools",
         supervisorsLabel: "Supervisors",
         selfTitle: "Cardz",
-        selfDesc: "Associate Professor, WCU"
+        selfDesc: "Professor, WCU"
       }
     };
 
     const langButtons = document.querySelectorAll(".lang-btn");
     const i18nNodes = document.querySelectorAll("[data-i18n]");
-    const browserLang = navigator.language.toLowerCase();
-    const defaultLang = browserLang.startsWith("zh") ? "zh" : "en";
+    const defaultLang = "zh";
 
     function setLanguage(lang) {
       const dict = I18N[lang] || I18N.en;
