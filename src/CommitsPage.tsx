@@ -1,35 +1,4 @@
-import { useState, useEffect } from 'react'
-
-function useTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window === 'undefined') return 'light'
-    const saved = localStorage.getItem('theme')
-    if (saved === 'dark' || saved === 'light') return saved
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  })
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
-    const handler = (e: MediaQueryListEvent) => {
-      if (!localStorage.getItem('theme')) {
-        setTheme(e.matches ? 'dark' : 'light')
-      }
-    }
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-
-  return { theme, setTheme }
-}
+import { useTheme } from './hooks/useTheme'
 
 const colorMap: Record<string, string> = {
   blue: 'bg-blue-500 text-white',
@@ -40,6 +9,7 @@ const colorMap: Record<string, string> = {
   cyan: 'bg-cyan-500 text-white',
   amber: 'bg-amber-500 text-white',
   indigo: 'bg-indigo-500 text-white',
+  violet: 'bg-violet-500 text-white',
 }
 
 interface DayCommit {
@@ -49,6 +19,19 @@ interface DayCommit {
 }
 
 const dayCommits: DayCommit[] = [
+  {
+    date: '2026-05-15',
+    color: 'violet',
+    items: [
+      '1. 提取 useTheme 到共享 hooks，消除 7 份重复代码',
+      '2. 重构 pages 目录：questions/ 和 explore/ 各为独立模块',
+      '3. 新增「提问」板块：3 个问题卡片 + 可视化回答页面',
+      '4. 新增「探索」板块：博客式列表 + 文章详情页',
+      '5. 新增「CCF 查询」卡片并补充若干工具卡片',
+      '6. 推广 README 为 Agent 视角的纯 Markdown 文档',
+      '7. 各种 UI 打磨：卡片等高、时间戳右上角、标题图标',
+    ],
+  },
   {
     date: '2026-05-15',
     color: 'blue',

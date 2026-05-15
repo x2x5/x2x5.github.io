@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTheme } from './hooks/useTheme'
 
 type Lang = 'zh' | 'en'
 
@@ -13,6 +14,10 @@ const I18N: Record<Lang, Record<string, string>> = {
     findDesc: '检索顶会论文',
     blogTitle: 'Blog',
     blogDesc: '经验 & 思考',
+    questionsTitle: '提问',
+    questionsDesc: '问题 & 回答',
+    exploreTitle: '探索',
+    exploreDesc: '新知识 & 新发现',
     ccfTitle: 'CCF',
     ccfDesc: 'CCF 等级查询',
     toolsLabel: '工具',
@@ -31,6 +36,10 @@ const I18N: Record<Lang, Record<string, string>> = {
     findDesc: 'retrieval for top papers',
     blogTitle: 'Blog',
     blogDesc: 'experience & thoughts',
+    questionsTitle: 'Q&A',
+    questionsDesc: 'questions & answers',
+    exploreTitle: 'Explore',
+    exploreDesc: 'new knowledge & discoveries',
     ccfTitle: 'CCF',
     ccfDesc: 'CCF recommended level',
     toolsLabel: 'Tools',
@@ -101,6 +110,31 @@ const thoughts: CardData[] = [
     ),
     color: 'emerald',
   },
+  {
+    href: 'questions.html',
+    titleKey: 'questionsTitle',
+    descKey: 'questionsDesc',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+        <path d="M12 17h.01" />
+      </svg>
+    ),
+    color: 'violet',
+  },
+  {
+    href: 'explore.html',
+    titleKey: 'exploreTitle',
+    descKey: 'exploreDesc',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" />
+      </svg>
+    ),
+    color: 'cyan',
+  },
 ]
 
 const supervisors: CardData[] = [
@@ -130,37 +164,6 @@ const supervisors: CardData[] = [
   },
 ]
 
-function useTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window === 'undefined') return 'light'
-    const saved = localStorage.getItem('theme')
-    if (saved === 'dark' || saved === 'light') return saved
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  })
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
-    const handler = (e: MediaQueryListEvent) => {
-      if (!localStorage.getItem('theme')) {
-        setTheme(e.matches ? 'dark' : 'light')
-      }
-    }
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-
-  return { theme, setTheme }
-}
-
 function useLanguage() {
   const [lang, setLang] = useState<Lang>(() => {
     if (typeof window === 'undefined') return 'zh'
@@ -182,6 +185,7 @@ const colorMap: Record<string, string> = {
   orange: 'bg-orange-500/10 text-orange-500',
   rose: 'bg-rose-500/10 text-rose-500',
   cyan: 'bg-cyan-500/10 text-cyan-500',
+  violet: 'bg-violet-500/10 text-violet-500',
 }
 
 function Card({ data, dict }: { data: CardData; dict: Record<string, string> }) {

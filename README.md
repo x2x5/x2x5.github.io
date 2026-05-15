@@ -1,143 +1,102 @@
-<p align="center">
-  <b>README for AI</b>
-  <span style="color:#999;margin:0 8px;">|</span>
-  <a href="https://x2x5.github.io/readme.html">给人看的 README</a>
-</p>
 
-<h1 align="center">x2x5.github.io</h1>
 
-<p align="center">
-  <a href="https://x2x5.github.io/" style="text-decoration:none;">
-    <span style="display:inline-block;padding:4px 12px;border-radius:999px;background:#365fcf;color:#fff;font-size:12px;">Live Site</span>
-  </a>
-  <span style="display:inline-block;padding:4px 12px;border-radius:999px;background:#10b981;color:#fff;font-size:12px;margin-left:6px;">React 19</span>
-  <span style="display:inline-block;padding:4px 12px;border-radius:999px;background:#0ea5e9;color:#fff;font-size:12px;margin-left:6px;">TypeScript</span>
-  <span style="display:inline-block;padding:4px 12px;border-radius:999px;background:#8b5cf6;color:#fff;font-size:12px;margin-left:6px;">Tailwind v4</span>
-</p>
+# README for AI | [README for Human](https://x2x5.github.io/readme.html)
 
-<p align="center" style="color:#666;font-size:14px;">
-  Personal homepage for x2x5 Research · Vite-based multi-page React app · Auto-deployed to GitHub Pages
-</p>
-
----
-
-## Quick Reference
+Personal homepage for x2x5. React 19 + TypeScript + Vite 8 + Tailwind CSS v4. Multi-page SPA (no router). Auto-deployed to GitHub Pages from `main`.
 
 | | |
-|:---|:---|
-| **Live URL** | https://x2x5.github.io/ |
-| **Custom Domain** | x2x5.top (via CNAME) |
-| **Framework** | React 19 + TypeScript |
-| **Build Tool** | Vite 8 |
-| **Styling** | Tailwind CSS v4 |
-| **Deploy** | GitHub Actions → GitHub Pages |
-| **Default Branch** | `main` |
+|---|---|
+| Live | https://x2x5.github.io |
+| Deploy | `.github/workflows/deploy.yml` → GH Pages |
 
----
-
-## Project Structure
-
-```
-x2x5.github.io/
-├── .github/workflows/deploy.yml    # CI/CD: build + deploy
-├── src/
-│   ├── App.tsx                     # Homepage (cards, i18n, theme)
-│   ├── ReadmePage.tsx              # README page (visual tutorial)
-│   ├── index.css                   # Tailwind entry + theme vars + dark mode
-│   ├── main.tsx                    # Entry: index.html
-│   ├── readme.tsx                  # Entry: readme.html
-│   └── vite-env.d.ts              # Vite client types
-├── index.html                      # Vite entry: homepage
-├── readme.html                     # Vite entry: README page
-├── vite.config.ts                  # Multi-page config
-├── tsconfig.json / tsconfig.*.json # TypeScript configs
-├── package.json                    # Dependencies
-├── .gitignore                      # node_modules/, dist/
-└── CNAME                           # x2x5.top
-```
-
----
-
-## Architecture Decisions
-
-### Multi-page without a router
-
-Two independent HTML entry points (`index.html` + `readme.html`), each with its own React root. Navigation uses plain `<a href>` links. No `react-router` needed.
-
-```ts
-// vite.config.ts
-build: {
-  cssCodeSplit: false,  // shared CSS injected into both entries
-  rollupOptions: {
-    input: {
-      main: 'index.html',
-      readme: 'readme.html',
-    },
-  },
-}
-```
-
-> **Why `cssCodeSplit: false`?**  
-> Without this, Vite extracts shared CSS into one file but only injects the `<link>` into the "primary" entry (`index.html`), leaving `readme.html` unstyled.
-
-### Theming via CSS custom properties
-
-Light/dark mode uses CSS variables (`--color-bg`, `--color-text`, etc.) scoped under `html.dark`. The `dark` class is toggled on `<html>` via a `useTheme()` hook. An inline script in each HTML entry sets the class before React hydrates to prevent FOUC.
-
-### i18n (hardcoded dictionaries)
-
-Two languages: `zh` (default) and `en`. Translation dictionaries live in `src/App.tsx`. Language preference persists to `localStorage`.
-
----
-
-## Available Scripts
+## Quick Start
 
 ```bash
-npm install       # first time only
-npm run dev       # dev server → http://localhost:5173/
-npm run build     # production build → dist/
-npm run preview   # preview dist/ locally
+npm install
+npm run dev        # dev server → http://localhost:5173
+npm run build      # production → dist/
+npm run preview    # serve dist/ locally
 ```
 
----
+## Architecture
 
-## Deployment Pipeline
+Every HTML entry in the project root is an independent page. No `react-router`. Navigation uses plain `<a href>`.
 
-Push to `main` triggers `.github/workflows/deploy.yml`:
+```
+[page].html → src/[page].tsx (entry) → src/pages/... (component)
+```
 
-1. `actions/checkout@v4`
-2. `actions/setup-node@v4` (Node 22)
-3. `npm ci`
-4. `npm run build`
-5. `actions/upload-pages-artifact@v3` (path: `./dist`)
-6. `actions/deploy-pages@v4`
+**Page mapping:**
 
-Total time ~30s. Page source in repo Settings → Pages must be set to **GitHub Actions**.
+| HTML | Entry TSX | Component |
+|---|---|---|
+| `index.html` | `src/main.tsx` | `src/App.tsx` |
+| `readme.html` | `src/readme.tsx` | `src/ReadmePage.tsx` |
+| `commits.html` | `src/commits.tsx` | `src/CommitsPage.tsx` |
+| `questions.html` | `src/questions.tsx` | `src/pages/questions/QuestionsPage.tsx` |
+| `answer.html` | `src/answer.tsx` | `src/pages/questions/AnswerPage.tsx` |
+| `explore.html` | `src/explore.tsx` | `src/pages/explore/ExplorePage.tsx` |
+| `article.html` | `src/article.tsx` | `src/pages/explore/ArticlePage.tsx` |
 
----
+## Directory Structure
+
+```
+src/
+  hooks/useTheme.ts            Shared theming hook (import, don't inline)
+  pages/
+    questions/                 Hub + detail pattern
+      QuestionsPage.tsx        Question card grid
+      AnswerPage.tsx           Routes to answer by ?id=
+      answers/                 One file per question answer
+    explore/                   Same pattern
+      ExplorePage.tsx          Article list, grouped by month
+      ArticlePage.tsx          Routes to article by ?id=
+      articles/                One file per article
+  App.tsx                      Homepage (cards, i18n dict, theme/language state)
+  ReadmePage.tsx               Visual human-facing README
+  CommitsPage.tsx              Commit history
+  index.css                    Tailwind entry + CSS custom properties + dark mode
+  [page].tsx                   Entry points (one per HTML)
+vite.config.ts                 Multi-page build config
+tsconfig.json / tsconfig.*.json
+package.json
+```
 
 ## Adding a New Page
 
-1. Create a new HTML entry (e.g. `about.html`) + TSX entry (e.g. `src/about.tsx`).
-2. Add to `vite.config.ts`:
-   ```ts
-   input: {
-     main: 'index.html',
-     readme: 'readme.html',
-     about: 'about.html',
-   }
-   ```
-3. Keep `cssCodeSplit: false` so shared styles are injected.
+```ts
+// 1. create page.html (copy pattern from existing)
+// 2. create src/page.tsx (entry, renders component)
+// 3. create src/pages/.../PageComponent.tsx
+// 4. register in vite.config.ts → rollupOptions.input
+// 5. keep cssCodeSplit: false (required for multi-page CSS)
+```
 
----
+## Common Modification Patterns
 
-## Notes for Future AI Assistants
+| Task | Location |
+|---|---|
+| Change homepage cards | `src/App.tsx` → `tools` / `supervisors` / `thoughts` arrays |
+| Add i18n text | `src/App.tsx` → `I18N` dictionary (zh + en) |
+| Add a question | `src/pages/questions/QuestionsPage.tsx` (card) + `src/pages/questions/answers/` (answer content) + `AnswerPage.tsx` (route) |
+| Add an explore article | `src/pages/explore/ExplorePage.tsx` (list entry) + `src/pages/explore/articles/` (content) + `ArticlePage.tsx` (route) |
+| Change theme colors | `src/index.css` → `@theme` block + `html.dark` overrides |
+| Change accent/background | Edit CSS variables in `src/index.css` |
+| Theme hook | Already extracted to `src/hooks/useTheme.ts` — do not inline in new pages |
+| Card color palette | `colorMap` in each page (must match Tailwind color names) |
 
-- **Do not modify `dist/` directly** — it is regenerated on every build.
-- **Page content**: edit `src/App.tsx` (homepage) or `src/ReadmePage.tsx` (README page).
-- **Styling**: edit `src/index.css`.
-- **New cards**: add entries to `tools` or `supervisors` arrays in `src/App.tsx`.
-- **Tailwind v4 syntax**: uses `@import "tailwindcss"` + `@theme { --color-*: ... }` — no `tailwind.config.js`.
-- **Dark mode**: manual `html.dark` class toggle, not `darkMode: 'class'` in a config file.
-- **macOS gotcha**: the filesystem is case-insensitive. Do not create both `readme.tsx` and `Readme.tsx` — they are the same file. Use distinct names like `ReadmePage.tsx`.
+## Build & Deploy
+
+- `npm run build` outputs to `dist/`. **Do not edit dist/ directly** — it is regenerated.
+- Push to `main` → GitHub Actions runs `npm ci && npm run build` and deploys `dist/` to Pages.
+- GitHub repo Settings → Pages → Source must be set to **GitHub Actions**.
+
+## Constraints & Gotchas
+
+- **cssCodeSplit: false** is required. Without it, shared CSS is only injected into the first entry, leaving other pages unstyled.
+- **No react-router**. All navigation is `<a href>`. Use relative paths like `./page.html`.
+- **macOS filesystem is case-insensitive**. Do not create files that differ only by case (e.g. `Readme.tsx` + `readme.tsx`). Use distinct names.
+- **Tailwind v4** uses `@import "tailwindcss"` + `@theme {}`. No `tailwind.config.js`. No `@apply` in config files.
+- **Dark mode**: `html.dark` class toggle via `useTheme()`. Inline `<script>` in each HTML file sets it before React hydrates (prevents FOUC).
 - **No test framework** configured. Add Vitest + React Testing Library if needed.
+- **`dist/`** is gitignored.
