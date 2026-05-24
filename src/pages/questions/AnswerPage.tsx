@@ -6,6 +6,7 @@ import BlogVsAIContent from './answers/BlogVsAIContent'
 import NoRouterContent from './answers/NoRouterContent'
 import WhyHtmlFilesContent from './answers/WhyHtmlFilesContent'
 import DevErrorBehaviorContent from './answers/DevErrorBehaviorContent'
+import WhatIsEnvironmentContent from './answers/WhatIsEnvironmentContent'
 
 const questionTimes: Record<string, string> = {
   'no-idea': '25/05/15 05:30:00',
@@ -14,6 +15,7 @@ const questionTimes: Record<string, string> = {
   'no-router': '26/05/15 12:57:00',
   'why-html-files': '26/05/15 12:59:00',
   'dev-error-behavior': '26/05/15 13:01:00',
+  'what-is-environment': '26/05/15 13:05:00',
 }
 
 export default function AnswerPage() {
@@ -59,6 +61,7 @@ export default function AnswerPage() {
         {id === 'no-idea' && <NoIdeaContent />}
         {id === 'channel-collection' && <ChannelContent />}
         {id === 'blog-vs-ai' && <BlogVsAIContent />}
+        {id === 'what-is-environment' && <WhatIsEnvironmentContent />}
 
         <div className="text-center mt-10 mb-6">
           <a

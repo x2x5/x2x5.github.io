@@ -12,17 +12,10 @@ const I18N: Record<Lang, Record<string, string>> = {
     supervisorDesc: '港科广助理教授',
     findTitle: 'Find',
     findDesc: '检索顶会论文',
-    blogTitle: 'Blog',
-    blogDesc: '经验 & 思考',
-    questionsTitle: '提问',
-    questionsDesc: '问题 & 回答',
-    exploreTitle: '探索',
-    exploreDesc: '新知识 & 新发现',
     ccfTitle: 'CCF',
     ccfDesc: 'CCF 等级查询',
     toolsLabel: '工具',
-    supervisorsLabel: '导师',
-    thoughtsLabel: '思考',
+    supervisorsLabel: '技能',
     selfTitle: '卡子',
     selfDesc: '野鸡大学副教授',
   },
@@ -34,17 +27,10 @@ const I18N: Record<Lang, Record<string, string>> = {
     supervisorDesc: 'Professor, HKUST(GZ)',
     findTitle: 'Find',
     findDesc: 'retrieval for top papers',
-    blogTitle: 'Blog',
-    blogDesc: 'experience & thoughts',
-    questionsTitle: 'Q&A',
-    questionsDesc: 'questions & answers',
-    exploreTitle: 'Explore',
-    exploreDesc: 'new knowledge & discoveries',
     ccfTitle: 'CCF',
     ccfDesc: 'CCF recommended level',
     toolsLabel: 'Tools',
-    supervisorsLabel: 'Supervisors',
-    thoughtsLabel: 'Thoughts',
+    supervisorsLabel: 'Skills',
     selfTitle: 'Cardz',
     selfDesc: 'Professor, WCU',
   },
@@ -94,46 +80,6 @@ const tools: CardData[] = [
       </svg>
     ),
     color: 'orange',
-  },
-]
-
-const thoughts: CardData[] = [
-  {
-    href: 'https://x2x5.top/blog/',
-    titleKey: 'blogTitle',
-    descKey: 'blogDesc',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-        <polyline points="14 2 14 8 20 8" />
-      </svg>
-    ),
-    color: 'emerald',
-  },
-  {
-    href: 'questions.html',
-    titleKey: 'questionsTitle',
-    descKey: 'questionsDesc',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-        <path d="M12 17h.01" />
-      </svg>
-    ),
-    color: 'violet',
-  },
-  {
-    href: 'explore.html',
-    titleKey: 'exploreTitle',
-    descKey: 'exploreDesc',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" />
-      </svg>
-    ),
-    color: 'cyan',
   },
 ]
 
@@ -266,7 +212,7 @@ export default function App() {
           ))}
         </section>
 
-        {/* 导师 */}
+        {/* 技能 */}
         <p className="text-[0.85rem] text-muted tracking-widest leading-none mt-10 mb-2.5">
           {dict.supervisorsLabel}
         </p>
@@ -276,15 +222,6 @@ export default function App() {
           ))}
         </section>
 
-        {/* 思考 */}
-        <p className="text-[0.85rem] text-muted tracking-widest leading-none mt-10 mb-2.5">
-          {dict.thoughtsLabel}
-        </p>
-        <section className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {thoughts.map((t) => (
-            <Card key={t.titleKey} data={t} dict={dict} />
-          ))}
-        </section>
       </main>
     </div>
   )

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useTheme } from '../../hooks/useTheme'
 import OnPolicyDistillationContent from './articles/OnPolicyDistillationContent'
+import HowOnPolicyDistillWorksContent from './articles/HowOnPolicyDistillWorksContent'
+import ReverseKLContent from './articles/ReverseKLContent'
 
 export default function ArticlePage() {
   const { theme, setTheme } = useTheme()
@@ -19,7 +21,7 @@ export default function ArticlePage() {
               <path d="M19 12H5" />
               <path d="m12 19-7-7 7-7" />
             </svg>
-            返回探索
+            返回研究
           </a>
           <button
             type="button"
@@ -36,6 +38,8 @@ export default function ArticlePage() {
         </div>
 
         {id === 'on-policy-distillation' && <OnPolicyDistillationContent />}
+        {id === 'how-on-policy-distill-works' && <HowOnPolicyDistillWorksContent />}
+        {id === 'reverse-kl' && <ReverseKLContent />}
 
         <div className="text-center mt-10 mb-6">
           <a
@@ -46,7 +50,7 @@ export default function ArticlePage() {
               <path d="M19 12H5" />
               <path d="m12 19-7-7 7-7" />
             </svg>
-            返回探索列表
+            返回研究列表
           </a>
         </div>
       </main>

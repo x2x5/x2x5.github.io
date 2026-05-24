@@ -88,7 +88,7 @@ export default function ExplorePage() {
               <circle cx="12" cy="12" r="10" />
               <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" />
             </svg>
-            探索
+            研究
           </h1>
           <div className="absolute right-0">
             <button

@@ -213,7 +213,7 @@ export default function WhyHtmlFilesContent() {
             <div className="space-y-2 text-xs text-muted">
               <div className="rounded-lg bg-emerald-500/10 p-2.5 text-center">在提问列表加一张新卡片</div>
               <div className="rounded-lg bg-emerald-500/10 p-2.5 text-center">链接到 <code>answer.html?id=new</code></div>
-              <div className="rounded-lg bg-emerald-500/10 p-2.5 text-center">在探索列表加一篇新文章</div>
+              <div className="rounded-lg bg-emerald-500/10 p-2.5 text-center">在研究列表加一篇新文章</div>
               <div className="rounded-lg bg-emerald-500/10 p-2.5 text-center">链接到 <code>article.html?id=new</code></div>
               <div className="text-center mt-2">
                 <span className="inline-block bg-emerald-500/10 text-emerald-500 rounded-full px-2 py-0.5 text-xs font-medium">都是在已有页面上加内容</span>
@@ -247,7 +247,7 @@ export default function WhyHtmlFilesContent() {
       <div className="mb-10">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-1 h-5 rounded-full bg-emerald-500" />
-          <h2 className="text-lg font-semibold text-text m-0">🧭 用「探索」举个例子</h2>
+          <h2 className="text-lg font-semibold text-text m-0">🧭 用「研究」举个例子</h2>
         </div>
 
         <div className="rounded-2xl border border-border bg-card-bg p-5 shadow-[0_10px_30px_var(--color-card-shadow)]">
@@ -255,13 +255,13 @@ export default function WhyHtmlFilesContent() {
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center flex-shrink-0 text-sm font-bold">1</div>
               <div className="text-sm text-text">
-                你探索了 <strong>On Policy Distillation</strong>
+                你研究了 <strong>On Policy Distillation</strong>
               </div>
             </div>
             <div className="ml-11 space-y-2 text-xs text-muted">
               <div className="flex items-center gap-2">
                 <span className="text-emerald-500">→</span>
-                探索列表多了一行：<code className="text-accent font-mono text-xs">ExplorePage.tsx</code> 的 <code className="text-accent font-mono text-xs">articles</code> 数组加一条
+                研究列表多了一行：<code className="text-accent font-mono text-xs">ExplorePage.tsx</code> 的 <code className="text-accent font-mono text-xs">articles</code> 数组加一条
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-emerald-500">→</span>
@@ -280,7 +280,7 @@ export default function WhyHtmlFilesContent() {
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center flex-shrink-0 text-sm font-bold">2</div>
                 <div className="text-sm text-text">
-                  你又探索了 <strong>某新东西 B</strong>
+                   你又研究了 <strong>某新东西 B</strong>
                 </div>
               </div>
               <div className="ml-11 mt-2 space-y-2 text-xs text-muted">
@@ -323,7 +323,7 @@ export default function WhyHtmlFilesContent() {
           <div className="flex items-start gap-2">
             <span className="text-emerald-500 flex-shrink-0 text-lg">✅</span>
             <div className="text-xs text-muted">
-              所以回到你的问题：探索 A、探索 B、探索 C……<strong>都不需要新 .html</strong>。<br />
+               所以回到你的问题：研究 A、研究 B、研究 C……<strong>都不需要新 .html</strong>。<br />
               你只需要加内容文件、加数组条目、注册路由——这三个步骤，已经全部在 <code className="text-accent font-mono text-xs">src/pages/explore/</code> 目录里完成。
             </div>
           </div>

@@ -104,7 +104,7 @@ export default function NoRouterContent() {
             <div className="text-center">
               <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-2xl mx-auto mb-2 flow">🧭</div>
               <div className="text-xs font-medium text-emerald-500">explore.html</div>
-              <div className="text-[0.6rem] text-muted">探索列表</div>
+              <div className="text-[0.6rem] text-muted">研究列表</div>
             </div>
           </div>
           <div className="text-center mt-6 pt-4 border-t border-border">
